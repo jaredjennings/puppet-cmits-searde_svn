@@ -1,0 +1,12 @@
+{
+  "name": "jaredjennings/searde_svn",
+  "version": "0.1.0",
+  "author": "Jared Jennings",
+  "summary": "Provide the functionality of the searde_svn module from CMITS (boilerplate)",
+  "license": "Apache-2.0",
+  "source": "https://github.com/jaredjennings/puppet-cmits-searde_svn",
+  "project_page": "https://github.com/jaredjennings/puppet-cmits-searde_svn",
+  "issues_url": "https://github.com/jaredjennings/puppet-cmits-searde_svn/issues",
+  "dependencies": []
+}
+
