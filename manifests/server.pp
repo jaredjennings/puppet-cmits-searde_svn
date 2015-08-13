@@ -45,7 +45,7 @@ class searde_svn::server(
     # there are some configurations that aren't included in the nss
     # site config file
     file { '/etc/httpd/conf.d':
-        owner => root, group => 0, mode => 0600,
+        owner => root, group => 0, mode => '0600',
         source => 'puppet:///modules/searde_svn/etc-httpd-conf.d',
     }
 
@@ -61,7 +61,7 @@ class searde_svn::server(
     }
 
     pki::nss::db { $dbdir:
-        owner => apache, group => 0, mode => 0600,
+        owner => apache, group => 0, mode => '0600',
         sqlite => false,
         pwfile => true,
     }
@@ -99,7 +99,7 @@ class searde_svn::server(
 
     file { "/var/www/virus-checkpoint":
         ensure => directory,
-        owner => apache, group => 0, mode => 0700,
+        owner => apache, group => 0, mode => '0700',
         require => Package['httpd'],
     }
 
@@ -107,12 +107,12 @@ class searde_svn::server(
 
     file { "/var/www/html/styles":
         ensure => directory,
-        owner => root, group => 0, mode => 0644,
+        owner => root, group => 0, mode => '0644',
         require => Package['httpd'],
     }
     file { "/var/www/html/pages":
         ensure => directory,
-        owner => root, group => 0, mode => 0644,
+        owner => root, group => 0, mode => '0644',
         require => Package['httpd'],
     }
 
@@ -125,28 +125,28 @@ class searde_svn::server(
 
         "/usr/local/bin/tail_httpd_access":
             ensure => present,
-            owner => root, group => 0, mode => 0755,
+            owner => root, group => 0, mode => '0755',
             content => "#!/bin/sh\n\
 /usr/bin/tail -f /var/log/messages | \
 grep --line-buffered httpd__access\n";
 
         "/usr/local/bin/tail_httpd_error":
             ensure => present,
-            owner => root, group => 0, mode => 0755,
+            owner => root, group => 0, mode => '0755',
             content => "#!/bin/sh\n\
 /usr/bin/tail -f /var/log/messages | \
 grep --line-buffered 'httpd[^_]'\n";
 
         "/usr/local/bin/tail_httpd":
             ensure => present,
-            owner => root, group => 0, mode => 0755,
+            owner => root, group => 0, mode => '0755',
             content => "#!/bin/sh\n\
 /usr/bin/tail -f /var/log/messages | \
 grep --line-buffered httpd\n";
 
         "/usr/local/bin/HR":
             ensure => present,
-            owner => root, group => 0, mode => 0755,
+            owner => root, group => 0, mode => '0755',
             content => "#!/bin/sh\n\
 /sbin/service httpd restart\n";
 
